@@ -10,9 +10,10 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class GeofenceService {
   itemsCollection: AngularFirestoreCollection<Geofence>;
   geofences: Observable<Geofence[]>;
+  geoDoc: AngularFirestoreDocument<Geofence>;
   constructor(public afs: AngularFirestore, public afd: AngularFireDatabase) {
 
-    this.itemsCollection = this.afs.collection('geofence', ref => ref.orderBy('radius', 'asc'));
+    this.itemsCollection = this.afs.collection('geofence', ref => ref.orderBy('id', 'asc'));
     // this.geofences = this.afs.collection('geofence').valueChanges();
     // pipe(map(data => data * 2))
     this.geofences = this.itemsCollection.snapshotChanges().map(changes => {
@@ -27,6 +28,10 @@ export class GeofenceService {
     return this.geofences;
   }
   addGeofence(geofence: Geofence) {
-this.itemsCollection.add(geofence);
+    this.itemsCollection.add(geofence);
+  }
+  deleteGeo(geofence: Geofence) {
+this.geoDoc = this.afs.doc(`geofence/${geofence.id}`);
+this.geoDoc.delete();
   }
 }

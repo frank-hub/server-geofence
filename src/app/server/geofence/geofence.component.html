@@ -73,7 +73,7 @@
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" [(ngModel)]="geofence.geoname" name="geoname">
+            <input type="text" class="form-control" value="125" [(ngModel)]="geofence.geoname" name="geoname">
           </div>
           <div class="form-group">
             <label for="address">Address</label>
@@ -81,11 +81,11 @@
           </div>
           <div class="form-group">
             <label for="lat">Latitude</label>
-            <input type="text" id="lat" class="form-control " value="{{lat}}" [(ngModel)]="geofence.latitudes" name="latitudes">
+            <input type="text" id="lat" class="form-control disabled"  value="21" [(ngModel)]="geofence.latitudes" name="latitudes">
           </div>
           <div class="form-group">
             <label for="lng">Longitude</label>
-            <input type="text" id="lng" class="form-control" value="{{lng}}" [(ngModel)]="geofence.longitudes" name="longitudes">
+            <input type="text" id="lng" class="form-control disabled" value="{{lng}}" [(ngModel)]="geofence.longitudes" name="longitudes">
           </div>
         <div class="input-group">
           <input type="number" class="form-control" placeholder="Distance" [(ngModel)]="geofence.radius" name="radius">
@@ -124,9 +124,8 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngIf="geofences?.length > 0 ;else noGeofene" class="animated bounceIn">
-      <tr *ngFor="let geofence of geofences">
+  <tbody *ngFor="let geofence of geofences" class="animated bounceIn">
+    <tr *ngIf="geofences?.length > 0 ;else noGeofene">
       <td scope="row">{{geofence.geoname}}</td>
       <td>Meru 972</td>
       <td>{{geofence.latitudes}}</td>
@@ -136,23 +135,22 @@
         <button class="btn btn-sm info-color" style="padding: 0px;height: 20px;width: 35px">
           <i class="fa fa-edit"></i>
         </button>
-        <button class="btn btn-sm btn-delete red" style="padding: 0px;height: 20px;width: 35px">
+        <button type="button" class="btn btn-sm btn-delete red" (click)="deleteGeo($event,geofence)" style="padding: 0px;height: 20px;width: 35px">
           <i class="fa fa-trash "></i>
         </button>
       </td>
     </tr>
-    <tr>
   </tbody>
 </table>
 <ng-template #noGeofene>
-<div class="btn btn-sm btn-block"><h3>There are No Geofence: Great One</h3></div>
+<div class="card btn btn-sm btn-block"><h3>There are No Geofence: Great One</h3></div>
 </ng-template>
   </div>
 </main>
 <!--Main layout-->
 
 <!--Footer-->
-<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn fixed-bottom">
   <!-- Social icons -->
   <div class="pb-4">
     <a href="https://www.facebook.com/mdbootstrap" target="_blank">

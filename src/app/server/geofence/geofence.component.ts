@@ -13,10 +13,11 @@ export class GeofenceComponent implements OnInit {
     geoname: '',
     latitudes: '',
     longitudes: '',
+    radius: '',
   };
   geofences: Geofence[];
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
   constructor(private geoService: GeofenceService ) { }
 
   ngOnInit() {
@@ -32,12 +33,17 @@ export class GeofenceComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
+        this.geofence.latitudes = this.lat;
+        this.geofence.longitudes = this.lng;
       });
     }
   }
   onSubmit() {
-    if (this.geofence !== '' ) {
+    if (this.geofence.geoname !== '') {
       this.geoService.addGeofence(this.geofence);
     }
+  }
+  deleteGeo(event, geofence) {
+    this.geoService.deleteGeo(geofence);
   }
 }
