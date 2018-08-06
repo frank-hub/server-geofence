@@ -1,0 +1,228 @@
+<header>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container-fluid">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">
+        <strong class="blue-text">Precise Location Marketing System</strong>
+      </a>
+
+      <ul class="nav navbar-nav nav-flex-icons ml-auto">
+        <a id="navbar-static-login" class="btn btn-info btn-rounded btn-sm waves-effect waves-light">LOG OUT
+          <i class="fa fa-sign-out ml-2"></i>
+        </a>
+      </ul>
+
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Sidebar -->
+  <div class="sidebar-fixed position-fixed">
+
+    <a class="logo-wrapper waves-effect">
+      <!-- <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt=""> -->
+      <h3 style="font-family: 'Courier New', Courier, monospace;font-weight: bold">PLMS</h3>
+    </a>
+
+
+    <div class="list-group list-group-flush">
+      <a routerLink="/server" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-tachometer mr-3"></i>Dashboard
+      </a>
+      <a routerLink="/geofence"  class="list-group-item active waves-effect">
+        <i class="fa fa-tencent-weibo mr-3"></i>Manage Fence</a>
+      <a routerLink="/report" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-pie-chart mr-3"></i>Analytics</a>
+      <a routerLink="/notifications" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-bell mr-3"></i>Notification</a>
+      <a routerLink="/map" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-map-marker mr-3"></i>Maps</a>
+    </div>
+
+  </div>
+  <!-- Sidebar -->
+
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main class="pt-5 mx-lg-5">
+  <div class="container-fluid mt-5">
+<div class="row">
+<div class="col-md-3"><h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><strong>Manage</strong> Geofence</h4></div>
+<div class="col-md-5">
+
+</div>
+<div class="col-md-4">
+<button type="button" class="btn btn-sm btn-primary " (click)="basicModal.show()" mdbWavesEffect><i class="fa fa-plus"></i> Add Geofence</button>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="geofence.geoname" name="geoname">
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name="address">
+          </div>
+          <div class="form-group">
+            <label for="lat">Latitude</label>
+            <input type="text" id="lat" class="form-control " value="{{lat}}" [(ngModel)]="geofence.latitudes" name="latitudes">
+          </div>
+          <div class="form-group">
+            <label for="lng">Longitude</label>
+            <input type="text" id="lng" class="form-control" value="{{lng}}" [(ngModel)]="geofence.longitudes" name="longitudes">
+          </div>
+        <div class="input-group">
+          <input type="number" class="form-control" placeholder="Distance" [(ngModel)]="geofence.radius" name="radius">
+          <div class="input-group-append" >
+            <!-- <span class="input-group-text">$</span> -->
+            <span class="input-group-text">METERS</span>
+          </div>
+        </div>
+          <div class="form-group">
+            <label for="power">Type</label>
+            <select class="form-control" id="power" required>
+              <!-- <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option> -->
+                <option value="circle">Circle</option>
+                <option value="hexagon">Hexagon</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="waves-light btn btn-sm btn-danger" style="margin-right: 205px" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+            <button type="submit" class="relative waves-light btn btn-sm btn-primary" mdbWavesEffect>Save changes</button>
+          </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<table class="table">
+  <thead class="grey text-white">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Type</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="geofences?.length > 0 ;else noGeofene" class="animated bounceIn">
+      <tr *ngFor="let geofence of geofences">
+      <td scope="row">{{geofence.geoname}}</td>
+      <td>Meru 972</td>
+      <td>{{geofence.latitudes}}</td>
+      <td>{{geofence.longitudes}}</td>
+      <td>Circle {{geofence.radius}}</td>
+      <td>
+        <button class="btn btn-sm info-color" style="padding: 0px;height: 20px;width: 35px">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button class="btn btn-sm btn-delete red" style="padding: 0px;height: 20px;width: 35px">
+          <i class="fa fa-trash "></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+  </tbody>
+</table>
+<ng-template #noGeofene>
+<div class="btn btn-sm btn-block"><h3>There are No Geofence: Great One</h3></div>
+</ng-template>
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+  <!-- Social icons -->
+  <div class="pb-4">
+    <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+      <i class="fa fa-facebook mr-3"></i>
+    </a>
+
+    <a href="https://twitter.com/MDBootstrap" target="_blank">
+      <i class="fa fa-twitter mr-3"></i>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+      <i class="fa fa-youtube mr-3"></i>
+    </a>
+
+    <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+      <i class="fa fa-google-plus mr-3"></i>
+    </a>
+
+    <a href="https://dribbble.com/mdbootstrap" target="_blank">
+      <i class="fa fa-dribbble mr-3"></i>
+    </a>
+
+    <a href="https://pinterest.com/mdbootstrap" target="_blank">
+      <i class="fa fa-pinterest mr-3"></i>
+    </a>
+
+    <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+      <i class="fa fa-github mr-3"></i>
+    </a>
+
+    <a href="http://codepen.io/mdbootstrap/" target="_blank">
+      <i class="fa fa-codepen mr-3"></i>
+    </a>
+  </div>
+
+  <div class="footer-copyright py-3">
+    © 2018 Copyright:
+    <a href="" target="_blank">PLMS</a>
+  </div>
+
+
+</footer>
+
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+</script>
+
+<!--Google Maps-->
+<!-- <script src="https://maps.google.com/maps/api/js"></script> -->
+<script>
+    // // Regular map
+    // function regular_map() {
+    //   var var_location = new google.maps.LatLng(0.1320247, 37.7193431);
+
+    //   var var_mapoptions = {
+    //     center: var_location,
+    //     zoom: 15
+    //   };
+
+    //   var var_map = new google.maps.Map(document.getElementById("map-container"),
+    //     var_mapoptions);
+
+    //   var var_marker = new google.maps.Marker({
+    //     position: var_location,
+    //     map: var_map,
+    //     title: "Server Location"
+    //   });
+    // }
+
+    // // Initialize maps
+    // google.maps.event.addDomListener(window, 'load', regular_map);
+</script>

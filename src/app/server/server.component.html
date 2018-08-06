@@ -1,0 +1,180 @@
+<header>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand waves-effect" routerLink="/server" target="_blank">
+      <strong class="blue-text">Precise Location Marketing System</strong>
+    </a>
+
+    <ul class="nav navbar-nav nav-flex-icons ml-auto">
+      <a id="navbar-static-login" class="btn btn-info btn-rounded btn-sm waves-effect waves-light">LOG OUT
+        <i class="fa fa-sign-out ml-2"></i>
+      </a>
+    </ul>
+
+
+  </div>
+</nav>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar-fixed position-fixed">
+
+      <a class="logo-wrapper waves-effect">
+        <img src="../assets/img/plms.png" class="img-fluid" alt="">
+        <!-- <h3 style="font-family: 'Courier New', Courier, monospace;font-weight: bold">PLMS</h3> -->
+      </a>
+
+
+      <div class="list-group list-group-flush">
+        <a routerLink="/server" class="list-group-item active waves-effect">
+          <i class="fa fa-tachometer mr-3"></i>Dashboard
+        </a>
+        <a routerLink="/geofence" class="list-group-item list-group-item-action waves-effect">
+          <i class="fa fa-tencent-weibo mr-3"></i>Manage Fence</a>
+        <a routerLink="/report" class="list-group-item list-group-item-action waves-effect">
+          <i class="fa fa-pie-chart mr-3"></i>Analytics</a>
+        <a routerLink="/notifications" class="list-group-item list-group-item-action waves-effect">
+          <i class="fa fa-bell mr-3"></i>Notification</a>
+        <a routerLink="/map" class="list-group-item list-group-item-action waves-effect">
+          <i class="fa fa-map-marker mr-3"></i>Maps</a>
+      </div>
+
+    </div>
+    <!-- Sidebar -->
+
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+      <div class="row wow fadeIn white-text">
+        <div class="col-md-3">
+          <div class="card warning-color">
+            <div class="row">
+              <div class="col-md-6">
+                            <h1 style="font-size: 90px;margin-left: 10px;">
+                              <i class="fa fa-globe white-text"></i>
+                            </h1>
+              </div>
+              <div class="col-md-6 text-center">
+                <p>Geofences</p>
+                <h1>0</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card info-color">
+            <div class="row">
+              <div class="col-sm-6">
+                <h1 style="font-size: 90px;margin-left: 10px"><i class="fa fa-street-view white-text"></i></h1>
+              </div>
+              <div class="col-sm-6 text-center">
+                <p>Customers</p>
+                <h1>0</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+        <div class="card primary-color">
+          <div class="row">
+            <div class="col-md-6">
+              <h1 style="font-size: 90px;margin-left: 10px;">
+                <i class="fa fa-exclamation-circle white-text"></i>
+              </h1>
+            </div>
+            <div class="col-md-6 text-center">
+              <p> Expired geofences</p>
+              <h1>0</h1>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card unique-color">
+            <div class="row">
+              <div class="col-md-6">
+                <h1 style="font-size: 90px;margin-left: 10px;">
+                  <i class="fa fa-bell white-text"></i>
+                </h1>
+              </div>
+              <div class="col-md-6 text-center">
+                <p>Notifications</p>
+                <h1>0</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="" style="margin-top: 15px">
+  <div class="row">
+    <div class="col-md-10 flex-center" >
+    <div style="display: block;height: 400px;width: 100%">
+      <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+        [legend]="true" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fa fa-facebook mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fa fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fa fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fa fa-google-plus mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fa fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fa fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fa fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fa fa-codepen mr-3"></i>
+      </a>
+    </div>
+
+    <div class="footer-copyright py-3">
+      © 2018 Copyright:
+      <a href="" target="_blank">PLMS </a>
+    </div>
+
+
+  </footer>
+
+  <script>
+    // Animations initialization
+    new WOW().init();
+  </script>
