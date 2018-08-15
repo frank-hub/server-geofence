@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeofenceService } from '../../service/geofence.service';
 import {Geofence} from '../../models/geofence-interface';
+
 import { Observable } from 'rxjs';
 
 @Component({
@@ -16,8 +17,8 @@ export class GeofenceComponent implements OnInit {
     radius: '',
   };
   geofences: Geofence[];
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
   constructor(private geoService: GeofenceService ) { }
 
   ngOnInit() {
@@ -33,8 +34,8 @@ export class GeofenceComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        this.geofence.latitudes = this.lat;
-        this.geofence.longitudes = this.lng;
+        // this.geofence.latitudes = this.lat;
+        // this.geofence.longitudes = this.lng;
       });
     }
   }

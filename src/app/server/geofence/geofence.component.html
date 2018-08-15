@@ -21,13 +21,12 @@
   <!-- Navbar -->
 
   <!-- Sidebar -->
-  <div class="sidebar-fixed position-fixed">
+  <div class="sidebar-fixed position-fixed" style="background-image : url(../assets/img/sample.jpg);">
 
-    <a class="logo-wrapper waves-effect">
-      <!-- <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt=""> -->
-      <h3 style="font-family: 'Courier New', Courier, monospace;font-weight: bold">PLMS</h3>
+    <a class="logo-wrapper waves-effect " style="background-color: white">
+      <img src="../assets/img/plms.png" class="img-fluid" alt="">
+      <!-- <h3 style="font-family: 'Courier New', Courier, monospace;font-weight: bold">PLMS</h3> -->
     </a>
-
 
     <div class="list-group list-group-flush">
       <a routerLink="/server" class="list-group-item list-group-item-action waves-effect">
@@ -81,7 +80,7 @@
           </div>
           <div class="form-group">
             <label for="lat">Latitude</label>
-            <input type="text" id="lat" class="form-control disabled"  value="21" [(ngModel)]="geofence.latitudes" name="latitudes">
+            <input type="text" id="lat" class="form-control disabled"  value="{{lat}}" [(ngModel)]="geofence.latitudes" name="latitudes">
           </div>
           <div class="form-group">
             <label for="lng">Longitude</label>

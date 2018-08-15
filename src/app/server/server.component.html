@@ -16,25 +16,22 @@
 
   </div>
 </nav>
-
-
     <!-- Sidebar -->
-    <div class="sidebar-fixed position-fixed">
+    <div class="sidebar-fixed position-fixed"  style="background-image : url(../assets/img/sample.jpg);">
 
-      <a class="logo-wrapper waves-effect">
-        <img src="../assets/img/plms.png" class="img-fluid" alt="">
-        <!-- <h3 style="font-family: 'Courier New', Courier, monospace;font-weight: bold">PLMS</h3> -->
-      </a>
+<a class="logo-wrapper waves-effect " style="background-color: white">
+  <img src="../assets/img/plms.png" class="img-fluid" alt="">
+  <!-- <h3 style="font-family: 'Courier New', Courier, monospace;font-weight: bold">PLMS</h3> -->
+</a>
 
-
-      <div class="list-group list-group-flush">
+      <div class="list-group list-group-flush" >
         <a routerLink="/server" class="list-group-item active waves-effect">
           <i class="fa fa-tachometer mr-3"></i>Dashboard
         </a>
         <a routerLink="/geofence" class="list-group-item list-group-item-action waves-effect">
           <i class="fa fa-tencent-weibo mr-3"></i>Manage Fence</a>
-        <a routerLink="/report" class="list-group-item list-group-item-action waves-effect">
-          <i class="fa fa-pie-chart mr-3"></i>Analytics</a>
+        <a routerLink="/staff" class="list-group-item list-group-item-action waves-effect">
+          <i class="fa fa-users mr-3"></i>Staff</a>
         <a routerLink="/notifications" class="list-group-item list-group-item-action waves-effect">
           <i class="fa fa-bell mr-3"></i>Notification</a>
         <a routerLink="/map" class="list-group-item list-group-item-action waves-effect">
@@ -61,7 +58,7 @@
               </div>
               <div class="col-md-6 text-center">
                 <p>Geofences</p>
-                <h1>{{geofences?.length }}</h1>
+                <h1>{{customer?.length}}</h1>
               </div>
             </div>
           </div>
@@ -74,7 +71,7 @@
               </div>
               <div class="col-sm-6 text-center">
                 <p>Customers</p>
-                <h1>0</h1>
+                <h1>{{customer?.length}}</h1>
               </div>
             </div>
           </div>
@@ -114,11 +111,7 @@
 <div class="" style="margin-top: 15px">
   <div class="row">
     <div class="col-md-10 flex-center" >
-    <div style="display: block;height: 400px;width: 100%">
-      <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
-        [legend]="true" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-      </canvas>
-    </div>
+
     </div>
   </div>
 

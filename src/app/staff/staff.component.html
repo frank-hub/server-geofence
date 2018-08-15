@@ -1,11 +1,9 @@
 <header>
-
-  <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container-fluid">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">
+      <a class="navbar-brand waves-effect" routerLink="/server" target="_blank">
         <strong class="blue-text">Precise Location Marketing System</strong>
       </a>
 
@@ -18,8 +16,6 @@
 
     </div>
   </nav>
-  <!-- Navbar -->
-
   <!-- Sidebar -->
   <div class="sidebar-fixed position-fixed" style="background-image : url(../assets/img/sample.jpg);">
 
@@ -29,15 +25,15 @@
     </a>
 
     <div class="list-group list-group-flush">
-      <a routerLink="/server" class="list-group-item list-group-item-action waves-effect">
+      <a routerLink="/server" class="list-group-item active waves-effect">
         <i class="fa fa-tachometer mr-3"></i>Dashboard
       </a>
       <a routerLink="/geofence" class="list-group-item list-group-item-action waves-effect">
         <i class="fa fa-tencent-weibo mr-3"></i>Manage Fence</a>
-      <a routerLink="/report" class="list-group-item list-group-item-action waves-effect">
-        <i class="fa fa-pie-chart mr-3"></i>Analytics</a>
-      <a routerLink="/notifications" class="list-group-item active waves-effect">
-        <i class="fa fa-bell mr-3" ></i>Notification</a>
+      <a routerLink="/staff" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-users mr-3"></i>Staff</a>
+      <a routerLink="/notifications" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-bell mr-3"></i>Notification</a>
       <a routerLink="/map" class="list-group-item list-group-item-action waves-effect">
         <i class="fa fa-map-marker mr-3"></i>Maps</a>
     </div>
@@ -51,43 +47,85 @@
 <!--Main layout-->
 <main class="pt-5 mx-lg-5">
   <div class="container-fluid mt-5">
-    <div class="card">
-      <div class="card-header">
-        Send Notification
-      </div>
-      <div class="card-body">
-        <form (ngSubmit)="addNotif(customerInterface)">
-          <div class="form-row">
-            <div class="form-group col-md-4">
-              <!-- <label for="inputState">Geofences</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose A Geofence</option>
-                <option *ngFor="let fences of fence" value="{{fences.geoname}}">{{fences.geoname}}</option>
-              </select> -->
+    <div class="row wow fadeIn white-text">
+      <div class="col-md-3">
+        <div class="card warning-color">
+          <div class="row">
+            <div class="col-md-6">
+              <h1 style="font-size: 90px;margin-left: 10px;">
+                <i class="fa fa-globe white-text"></i>
+              </h1>
             </div>
-            <div class="form-group col-md-6">
-              <label for="tit">Title</label>
-              <input type="text" class="form-control" id="tit" [(ngModel)]="customerInterface.title" name="title">
-            </div>
-            <div class="form-group col-md-8">
-              <label class="form-check-label" for="notify">
-                Message
-              </label>
-              <input type="text" class="form-control" id="notify" [(ngModel)]="customerInterface.message" name="message">
+            <div class="col-md-6 text-center">
+              <p>Geofences</p>
+              <h1>0</h1>
             </div>
           </div>
-
-          <button type="submit" class="btn btn-primary">
-            <i class="fa fa-send"></i> Send</button>
-        </form>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card info-color">
+          <div class="row">
+            <div class="col-sm-6">
+              <h1 style="font-size: 90px;margin-left: 10px">
+                <i class="fa fa-street-view white-text"></i>
+              </h1>
+            </div>
+            <div class="col-sm-6 text-center">
+              <p>Customers</p>
+              <h1>0</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card primary-color">
+          <div class="row">
+            <div class="col-md-6">
+              <h1 style="font-size: 90px;margin-left: 10px;">
+                <i class="fa fa-exclamation-circle white-text"></i>
+              </h1>
+            </div>
+            <div class="col-md-6 text-center">
+              <p> Expired geofences</p>
+              <h1>0</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card unique-color">
+          <div class="row">
+            <div class="col-md-6">
+              <h1 style="font-size: 90px;margin-left: 10px;">
+                <i class="fa fa-bell white-text"></i>
+              </h1>
+            </div>
+            <div class="col-md-6 text-center">
+              <p>Notifications</p>
+              <h1>0</h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="" style="margin-top: 15px">
+      <div class="row">
+        <div class="col-md-10 flex-center">
+          <div style="display: block;height: 400px;width: 100%">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </main>
 <!--Main layout-->
 
 <!--Footer-->
-<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn fixed-bottom">
+<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
 
   <!-- Social icons -->
   <div class="pb-4">
@@ -126,13 +164,13 @@
 
   <div class="footer-copyright py-3">
     © 2018 Copyright:
-    <a href="" target="_blank">PLMS</a>
+    <a href="" target="_blank">PLMS </a>
   </div>
 
 
 </footer>
 
-<script type="text/javascript">
+<script>
   // Animations initialization
   new WOW().init();
 </script>

@@ -10,12 +10,19 @@ export const environment = {
 //     < script >
   // Initialize Firebase
   firebase: {
-  apiKey: 'AIzaSyBaM2-Hv7WrnzGuYQqOiTDIANL5cduHLvU',
-  authDomain: 'precise-location-1531058565225.firebaseapp.com',
-  databaseURL: 'https://precise-location-1531058565225.firebaseio.com',
-  projectId: 'precise-location-1531058565225',
-  storageBucket: 'precise-location-1531058565225.appspot.com',
-  messagingSenderId: '609131036040'
+  // apiKey: 'AIzaSyBaM2-Hv7WrnzGuYQqOiTDIANL5cduHLvU',
+  // authDomain: 'precise-location-1531058565225.firebaseapp.com',
+  // databaseURL: 'https://precise-location-1531058565225.firebaseio.com',
+  // projectId: 'precise-location-1531058565225',
+  // storageBucket: 'precise-location-1531058565225.appspot.com',
+  // messagingSenderId: '609131036040'
+
+   apiKey: 'AIzaSyBaM2-Hv7WrnzGuYQqOiTDIANL5cduHLvU',
+    authDomain: 'precise-location-1531058565225.firebaseapp.com',
+    databaseURL: 'https://precise-location-1531058565225.firebaseio.com',
+    projectId: 'precise-location-1531058565225',
+    storageBucket: 'precise-location-1531058565225.appspot.com',
+    messagingSenderId: '609131036040'
 },
 // firebase.initializeApp(config);
 // </script>

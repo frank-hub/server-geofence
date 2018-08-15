@@ -10,7 +10,6 @@ import { ServerComponent } from './server/server.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { GeofenceComponent } from './server/geofence/geofence.component';
-import { ReportsComponent } from './server/reports/reports.component';
 import { NotificationComponent } from './server/notification/notification.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
@@ -20,6 +19,7 @@ import { environment } from '../environments/environment';
 import { HttpModule } from '@angular/http';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { GeofenceService } from './service/geofence.service';
+import { StaffComponent } from './staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,9 @@ import { GeofenceService } from './service/geofence.service';
     ServerComponent,
     LoginComponent,
     GeofenceComponent,
-    ReportsComponent,
     NotificationComponent,
-    MapComponent
+    MapComponent,
+    StaffComponent
   ],
   imports: [
     BrowserModule,
@@ -58,8 +58,8 @@ import { GeofenceService } from './service/geofence.service';
         component: GeofenceComponent
       },
       {
-        path: 'report',
-        component: ReportsComponent
+        path: 'staff',
+        component: StaffComponent
       },
       {
         path: 'notifications',
