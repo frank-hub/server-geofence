@@ -14,6 +14,7 @@ export class ServerComponent implements OnInit {
   dataset: Observable<Geofence[]>;
   geofences: Geofence[];
   customer;
+  notification;
   constructor(private geoService: GeofenceService, public database: AngularFireDatabase  ) {
   this.geoService.getFences().subscribe(geofences => {
     // console.log(geofences);
@@ -27,13 +28,21 @@ export class ServerComponent implements OnInit {
     //   console.log(this.geofences);
     // });
       this.getCustomer();
+      this.getNotify();
   }
-
   getCustomer() {
     this.database.list('customers/').valueChanges().subscribe(
       data => {
         console.log(data);
         this.customer = data;
+      }
+    );
+  }
+  getNotify() {
+    this.database.list('notifications/').valueChanges().subscribe(
+      datas => {
+        console.log(datas);
+        this.notification = datas;
       }
     );
   }

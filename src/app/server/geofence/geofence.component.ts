@@ -3,7 +3,9 @@ import { GeofenceService } from '../../service/geofence.service';
 import {Geofence} from '../../models/geofence-interface';
 
 import { Observable } from 'rxjs';
-
+import { Notification } from '../../models/notification-interface';
+import { NotificationService } from '../../service/notification.service';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'app-geofence',
   templateUrl: './geofence.component.html',
@@ -16,10 +18,14 @@ export class GeofenceComponent implements OnInit {
     longitudes: '',
     radius: '',
   };
+  geofenceInterface = {} as Geofence;
+  geofenceRef: AngularFireList<any>;
   geofences: Geofence[];
   lat: number;
   lng: number;
-  constructor(private geoService: GeofenceService ) { }
+  constructor(private geoService: GeofenceService, public database: AngularFireDatabase) {
+    this.geofenceRef = this.database.list('geofences');
+  }
 
   ngOnInit() {
     this.getUserLocation();
@@ -28,6 +34,7 @@ export class GeofenceComponent implements OnInit {
         this.geofences = geofences;
     });
   }
+
   getUserLocation() {
     /// Locate the user
     if (navigator.geolocation) {
@@ -38,6 +45,16 @@ export class GeofenceComponent implements OnInit {
         // this.geofence.longitudes = this.lng;
       });
     }
+  }
+  addFence(geofenceInterface: Notification) {
+    // console.log(customerInterface);
+    this.geofenceRef.push({
+      geoname: this.geofenceInterface.geoname,
+      latitudes: this.geofenceInterface.latitudes,
+      longitudes: this.geofenceInterface.longitudes,
+      radius: this.geofenceInterface.radius,
+      type: this.geofenceInterface.type,
+    });
   }
   onSubmit() {
     if (this.geofence.geoname !== '') {

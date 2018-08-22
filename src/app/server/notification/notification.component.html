@@ -34,8 +34,8 @@
       </a>
       <a routerLink="/geofence" class="list-group-item list-group-item-action waves-effect">
         <i class="fa fa-tencent-weibo mr-3"></i>Manage Fence</a>
-      <a routerLink="/report" class="list-group-item list-group-item-action waves-effect">
-        <i class="fa fa-pie-chart mr-3"></i>Analytics</a>
+      <a routerLink="/staff" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-users mr-3"></i>Staff</a>
       <a routerLink="/notifications" class="list-group-item active waves-effect">
         <i class="fa fa-bell mr-3" ></i>Notification</a>
       <a routerLink="/map" class="list-group-item list-group-item-action waves-effect">
@@ -59,11 +59,11 @@
         <form (ngSubmit)="addNotif(customerInterface)">
           <div class="form-row">
             <div class="form-group col-md-4">
-              <!-- <label for="inputState">Geofences</label>
+              <label for="inputState">Geofences</label>
               <select id="inputState" class="form-control">
                 <option selected>Choose A Geofence</option>
                 <option *ngFor="let fences of fence" value="{{fences.geoname}}">{{fences.geoname}}</option>
-              </select> -->
+              </select>
             </div>
             <div class="form-group col-md-6">
               <label for="tit">Title</label>

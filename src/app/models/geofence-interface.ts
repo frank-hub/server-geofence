@@ -4,4 +4,5 @@ export interface Geofence {
   latitudes?: string;
   longitudes?: string;
   radius?: string;
+  type?: string;
 }

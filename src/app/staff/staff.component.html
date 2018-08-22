@@ -25,12 +25,12 @@
     </a>
 
     <div class="list-group list-group-flush">
-      <a routerLink="/server" class="list-group-item active waves-effect">
+      <a routerLink="/server" class="list-group-item waves-effect list-group-item-action">
         <i class="fa fa-tachometer mr-3"></i>Dashboard
       </a>
       <a routerLink="/geofence" class="list-group-item list-group-item-action waves-effect">
         <i class="fa fa-tencent-weibo mr-3"></i>Manage Fence</a>
-      <a routerLink="/staff" class="list-group-item list-group-item-action waves-effect">
+      <a routerLink="/staff" class="list-group-item active  waves-effect">
         <i class="fa fa-users mr-3"></i>Staff</a>
       <a routerLink="/notifications" class="list-group-item list-group-item-action waves-effect">
         <i class="fa fa-bell mr-3"></i>Notification</a>
@@ -47,78 +47,78 @@
 <!--Main layout-->
 <main class="pt-5 mx-lg-5">
   <div class="container-fluid mt-5">
-    <div class="row wow fadeIn white-text">
-      <div class="col-md-3">
-        <div class="card warning-color">
-          <div class="row">
-            <div class="col-md-6">
-              <h1 style="font-size: 90px;margin-left: 10px;">
-                <i class="fa fa-globe white-text"></i>
-              </h1>
-            </div>
-            <div class="col-md-6 text-center">
-              <p>Geofences</p>
-              <h1>0</h1>
-            </div>
+    <button type="button" mdbBtn class="btn btn-sm btn-primary relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Launch
+      demo modal</button>
+
+    <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title w-100" id="myModalLabel">Staff Registration</h4>
           </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card info-color">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1 style="font-size: 90px;margin-left: 10px">
-                <i class="fa fa-street-view white-text"></i>
-              </h1>
-            </div>
-            <div class="col-sm-6 text-center">
-              <p>Customers</p>
-              <h1>0</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card primary-color">
-          <div class="row">
-            <div class="col-md-6">
-              <h1 style="font-size: 90px;margin-left: 10px;">
-                <i class="fa fa-exclamation-circle white-text"></i>
-              </h1>
-            </div>
-            <div class="col-md-6 text-center">
-              <p> Expired geofences</p>
-              <h1>0</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card unique-color">
-          <div class="row">
-            <div class="col-md-6">
-              <h1 style="font-size: 90px;margin-left: 10px;">
-                <i class="fa fa-bell white-text"></i>
-              </h1>
-            </div>
-            <div class="col-md-6 text-center">
-              <p>Notifications</p>
-              <h1>0</h1>
-            </div>
-          </div>
+          <div class="modal-body">
+            <!-- Register form -->
+            <form (ngSubmit)="addStaff(staffInterface)">
+              <p class="h5 text-center mb-4">Sign up</p>
+
+              <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="fname" class="form-control" required mdbInputDirective [(ngModel)]="staffInterface.first_name" name="first_name">
+                <label for="fname">First name</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="sname" class="form-control" required mdbInputDirective [(ngModel)]="staffInterface.second_name" name="second_name">
+                <label for="sname">Second name</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="email"  id="orangeForm-email" class="form-control" required mdbInputDirective [(ngModel)]="staffInterface.email" name="email">
+                <label for="orangeForm-email">Your email</label>
+              </div>
+
+              <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password"  id="orangeForm-pass" class="form-control" required mdbInputDirective [(ngModel)]="staffInterface.password" name="password">
+                <label for="orangeForm-pass">Your password</label>
+              </div>
+                              <button type="submit" class="btn btn-sm btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
+
+                </form>
+                <!-- Register form -->
+                </div>
+              <div class="modal-footer">
+                <button type="button"  class="btn btn-sm btn-primary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+              </div>
         </div>
       </div>
     </div>
-
-    <div class="" style="margin-top: 15px">
       <div class="row">
         <div class="col-md-10 flex-center">
-          <div style="display: block;height: 400px;width: 100%">
-          </div>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-
-    </div>
 
   </div>
 </main>
