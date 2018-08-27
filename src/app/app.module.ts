@@ -20,6 +20,8 @@ import { HttpModule } from '@angular/http';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { GeofenceService } from './service/geofence.service';
 import { StaffComponent } from './staff/staff.component';
+import { AlertsModule } from 'angular-alert-module';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { StaffComponent } from './staff/staff.component';
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
+    AlertsModule.forRoot(),
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'precise-location'),
     AngularFireDatabaseModule,
     AngularFirestoreModule,

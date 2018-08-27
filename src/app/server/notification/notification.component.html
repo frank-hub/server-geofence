@@ -1,7 +1,7 @@
 <header>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container-fluid">
 
       <!-- Brand -->
@@ -60,20 +60,20 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputState">Geofences</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose A Geofence</option>
-                <option *ngFor="let fences of fence" value="{{fences.geoname}}">{{fences.geoname}}</option>
+              <select id="inputState" class="form-control" [(ngModel)]="customerInterface.the_fence" name="the_fence">
+                <option disabled selected>Choose A Geofence</option>
+                <option *ngFor="let fences of the_fences" value="{{fences.geoname}}" required>{{fences.geoname}}</option>
               </select>
             </div>
             <div class="form-group col-md-6">
               <label for="tit">Title</label>
-              <input type="text" class="form-control" id="tit" [(ngModel)]="customerInterface.title" name="title">
+              <input type="text" class="form-control" id="tit" [(ngModel)]="customerInterface.title" required name="title">
             </div>
             <div class="form-group col-md-8">
               <label class="form-check-label" for="notify">
                 Message
               </label>
-              <input type="text" class="form-control" id="notify" [(ngModel)]="customerInterface.message" name="message">
+              <input type="text" class="form-control" id="notify" [(ngModel)]="customerInterface.message" required name="message">
             </div>
           </div>
 

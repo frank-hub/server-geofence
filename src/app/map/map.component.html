@@ -61,7 +61,12 @@
     </agm-marker>
   </agm-map>
 </div> -->
-<agm-map [zoom]="10" [latitude]="lat" [longitude]="lng">
+<div class="row text-center">
+  <div class="col-md-8 mx-auto">
+  <h3 style="font-weight: bold">The Location of our Customers</h3>
+  </div>
+</div>
+<agm-map [zoom]="8" [latitude]="lat" [longitude]="lng">
   <agm-marker *ngFor="let loc of customerLoc" [latitude]="loc.latitude" [longitude]="loc.longitute">
     <agm-info-window>
       <h3>
@@ -79,27 +84,23 @@
 <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
   <!-- Social icons -->
   <div class="pb-4">
-    <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+    <a href="https://www.facebook.com/" target="_blank">
       <i class="fa fa-facebook mr-3"></i>
     </a>
 
-    <a href="https://twitter.com/MDBootstrap" target="_blank">
+    <a href="https://twitter.com/" target="_blank">
       <i class="fa fa-twitter mr-3"></i>
     </a>
 
-    <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+    <a href="https://www.youtube.com/" target="_blank">
       <i class="fa fa-youtube mr-3"></i>
     </a>
 
-    <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-      <i class="fa fa-google-plus mr-3"></i>
-    </a>
-
-    <a href="https://dribbble.com/mdbootstrap" target="_blank">
+    <a href="https://dribbble.com/" target="_blank">
       <i class="fa fa-dribbble mr-3"></i>
     </a>
 
-    <a href="https://pinterest.com/mdbootstrap" target="_blank">
+    <a href="https://pinterest.com/" target="_blank">
       <i class="fa fa-pinterest mr-3"></i>
     </a>
 
@@ -107,7 +108,7 @@
       <i class="fa fa-github mr-3"></i>
     </a>
 
-    <a href="http://codepen.io/mdbootstrap/" target="_blank">
+    <a href="http://codepen.io/" target="_blank">
       <i class="fa fa-codepen mr-3"></i>
     </a>
   </div>

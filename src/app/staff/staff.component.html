@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container-fluid">
 
       <!-- Brand -->
@@ -45,10 +45,11 @@
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main class="pt-5 mx-lg-5">
+<main class="mx-lg-5">
   <div class="container-fluid mt-5">
-    <button type="button" mdbBtn class="btn btn-sm btn-primary relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Launch
-      demo modal</button>
+    <button type="button" mdbBtn class="btn btn-sm btn-primary relative waves-light" (click)="basicModal.show()" mdbWavesEffect>
+      ADD STAFF
+    </button>
 
     <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -85,7 +86,7 @@
                 <input type="password"  id="orangeForm-pass" class="form-control" required mdbInputDirective [(ngModel)]="staffInterface.password" name="password">
                 <label for="orangeForm-pass">Your password</label>
               </div>
-                              <button type="submit" class="btn btn-sm btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
+                        <button type="submit" class="btn btn-sm btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
 
                 </form>
                 <!-- Register form -->
@@ -105,15 +106,20 @@
                 <th scope="col">First</th>
                 <th scope="col">Last</th>
                 <th scope="col">Email</th>
+                <th scope="col">Department</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+              <tr *ngFor="let staffs of staff">
+                <td scope="row">#</td>
+                <td >{{staffs.first_name}}</td>
+                <td>{{staffs.second_name}}</td>
+                <td>{{staffs.email}}</td>
+                <td>Depart25</td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary">DELETE</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -125,7 +131,7 @@
 <!--Main layout-->
 
 <!--Footer-->
-<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+<footer class="fixed-bottom page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
 
   <!-- Social icons -->
   <div class="pb-4">

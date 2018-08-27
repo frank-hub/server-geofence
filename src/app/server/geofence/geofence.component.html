@@ -1,7 +1,7 @@
 <header>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container-fluid">
 
       <!-- Brand -->
@@ -49,7 +49,7 @@
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main class="pt-5 mx-lg-5">
+<main class="mx-lg-5">
   <div class="container-fluid mt-5">
 <div class="row">
 <div class="col-md-3"><h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><strong>Manage</strong> Geofence</h4></div>
@@ -69,7 +69,7 @@
         <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="addFence(geofenceInterface)">
+        <form (ngSubmit)="addGeofence(geofenceInterface)">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" value="125" [(ngModel)]="geofenceInterface.geoname" name="geoname">
@@ -80,11 +80,11 @@
           </div>
           <div class="form-group">
             <label for="lat">Latitude</label>
-            <input type="text" id="lat" class="form-control "  value="{{lat}}" [(ngModel)]="geofenceInterface.latitudes" name="latitudes">
+            <input type="text" id="lat" class="form-control"  value="{{lat}}" [(ngModel)]="geofenceInterface.latitudes" name="latitudes">
           </div>
           <div class="form-group">
             <label for="lng">Longitude</label>
-            <input type="text" id="lng" class="form-control " value="{{lng}}" [(ngModel)]="geofenceInterface.longitudes" name="longitudes">
+            <input type="text" id="lng" class="form-control" value="{{lng}}" [(ngModel)]="geofenceInterface.longitudes" name="longitudes">
           </div>
         <div class="input-group">
           <input type="number" class="form-control" placeholder="Distance" [(ngModel)]="geofenceInterface.radius" name="radius">
@@ -123,24 +123,50 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody *ngFor="let geofence of geofences" class="animated bounceIn">
-    <tr *ngIf="geofences?.length > 0 ;else noGeofene">
-      <td scope="row">{{geofence.geoname}}</td>
+  <tbody *ngIf="geofence?.length > 0 ;else noGeofene" class="animated bounceIn">
+    <tr *ngFor="let geofences of geofence">
+      <td scope="row">{{geofences.geoname}}</td>
       <td>Meru 972</td>
-      <td>{{geofence.latitudes}}</td>
-      <td>{{geofence.longitudes}}</td>
-      <td>Circle {{geofence.radius}}</td>
+      <td>{{geofences.latitudes}}</td>
+      <td>{{geofences.longitudes}}</td>
+      <td>{{geofences.type}} {{geofences.radius}}</td>
       <td>
         <button class="btn btn-sm info-color" style="padding: 0px;height: 20px;width: 35px">
           <i class="fa fa-edit"></i>
         </button>
-        <button type="button" class="btn btn-sm btn-delete red" (click)="deleteGeo($event,geofence)" style="padding: 0px;height: 20px;width: 35px">
+        <button type="button" class="btn btn-sm btn-delete red" style="padding: 0px;height: 20px;width: 35px">
           <i class="fa fa-trash "></i>
         </button>
       </td>
     </tr>
   </tbody>
 </table>
+<div class="row">
+<div class="col-md-4">
+  <h3>
+     How Does Geofencing Work?
+  </h3>
+  <hr>
+<p>
+   How we define it is geofencing is what we call direct-to-mobile advertising that allows companies to serve ads to people
+  based on their physical activities and the places that they go. It’s not simply zip code or citywide targeting, but instead
+  our ability to serve ads to people that walk inside of individual buildings, let’s say an event that’s happening at, let’s
+  say a convention center, or a conference, or something more along those lines, or one of your competitor locations.
+</p>
+</div>
+  <div class="col-md-8">
+    <agm-map [zoom]="8" [latitude]="lat" [longitude]="lng">
+      <agm-marker *ngFor="let loc of geofence" [latitude]="loc.latitudes" [longitude]="loc.longitudes">
+        <agm-info-window>
+          <h3>
+            <strong>Name: {{loc.geoname}}</strong>
+            <p>{{loc | json}}</p>
+          </h3>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>
 <ng-template #noGeofene>
 <div class="card btn btn-sm btn-block"><h3>There are No Geofence: Great One</h3></div>
 </ng-template>
@@ -149,7 +175,7 @@
 <!--Main layout-->
 
 <!--Footer-->
-<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn fixed-bottom">
+<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
   <!-- Social icons -->
   <div class="pb-4">
     <a href="https://www.facebook.com/mdbootstrap" target="_blank">

@@ -1,5 +1,5 @@
 <header>
-<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+<nav class="navbar  navbar-expand-lg navbar-light white scrolling-navbar">
   <div class="container-fluid">
 
     <!-- Brand -->
@@ -8,9 +8,9 @@
     </a>
 
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-      <a id="navbar-static-login" class="btn btn-info btn-rounded btn-sm waves-effect waves-light">LOG OUT
+      <button (click)="logout()" id="navbar-static-login" class="btn btn-info btn-rounded btn-sm waves-effect waves-light">LOG OUT
         <i class="fa fa-sign-out ml-2"></i>
-      </a>
+      </button>
     </ul>
 
 
@@ -45,7 +45,7 @@
   <!--Main Navigation-->
 
   <!--Main layout-->
-  <main class="pt-5 mx-lg-5">
+  <main class="mx-lg-5">
     <div class="container-fluid mt-5">
       <div class="row wow fadeIn white-text">
         <div class="col-md-3">
@@ -58,7 +58,7 @@
               </div>
               <div class="col-md-6 text-center">
                 <p>Geofences</p>
-                <h1>{{customer?.length}}</h1>
+                <h1>{{geofence?.length}}</h1>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="col-md-3">
-        <div class="card primary-color">
+        <div class="card danger-color">
           <div class="row">
             <div class="col-md-6">
               <h1 style="font-size: 90px;margin-left: 10px;">
@@ -109,19 +109,52 @@
       </div>
 
 <div class="" style="margin-top: 15px">
-  <div class="row">
-    <div class="col-md-10 flex-center" >
+    <div>
+      <div *ngIf="afAuth.authState | async as authUser ; else loginTemplate()">
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+              <!--Section: Testimonials v.1-->
+              <section class="section pb-3 text-center ml-auto">
 
+                <!--Section heading-->
+                <h1 class="section-heading h3 pt-4">User Profile</h1>                  <!--Grid column-->
+                  <div class="">
+                    <!--Card-->
+                    <div class="card testimonial-card">
+                      <!--Background color-->
+                      <div class="card-up teal">
+                      </div>
+                      <!--Avatar-->
+                      <div class="avatar mx-auto white">
+                        <img [src]="authUser.photoURL" alt=""  class="rounded-circle img-fluid" style="height: 100px;">
+                      </div>
+                      <div class="card-body">
+                        <h4 class="card-title mt-1">{{authUser.displayName}}</h4>
+                        <hr>
+
+                        <p><i class="fa fa-quote-left"></i>
+                        Email : {{authUser.email}} <br/>
+                        Phone No: {{authUser.phoneNumber}}<br/>
+                        </p>
+                      </div>
+                    </div>
+                    <!--Card-->
+                </div>
+              </section>
+              <!--Section: Testimonials v.1-->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
 </div>
   </main>
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fixed-bottom fadeIn">
+  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
 
     <!-- Social icons -->
     <div class="pb-4">

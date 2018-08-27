@@ -1,7 +1,8 @@
 <div class="jumbotron text-center blue lighten-1 white-text">
   <h4 style="font-weight: bold">Precise Location Marketing System</h4>
 </div>
-<div class="mx-auto" style="width: 20em;margin-top: 4em">
+
+<div class="mx-auto" style="width: 20em;margin-top: 4em;">
   <!-- Material form login -->
   <div class="card">
     <div class="card-body">
@@ -24,9 +25,12 @@
         <div class="text-center mt-4">
           <!-- <button class="btn btn-outline-blue lighten-1 white-text" ripple-radius (click)="serverpage()">Login</button> -->
         <a href="/server" class="btn btn-outline-blue">Login</a>
+        <button (click)="login()">Login</button>
         </div>
       </form>
-
+      <div *ngIf="afAuth.authState | async as authUser ; ">
+<img [src]="authUser.photoURL" alt="" srcset="">
+      </div>
     </div>
   </div>
 </div>

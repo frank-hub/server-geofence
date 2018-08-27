@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GeofenceService } from '../../service/geofence.service';
 import {Geofence} from '../../models/geofence-interface';
+import { AlertsService } from 'angular-alert-module';
 
-import { Observable } from 'rxjs';
-import { Notification } from '../../models/notification-interface';
-import { NotificationService } from '../../service/notification.service';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'app-geofence',
@@ -12,29 +10,22 @@ import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
   styleUrls: ['./geofence.component.scss']
 })
 export class GeofenceComponent implements OnInit {
-  geofence: Geofence = {
-    geoname: '',
-    latitudes: '',
-    longitudes: '',
-    radius: '',
-  };
   geofenceInterface = {} as Geofence;
-  geofenceRef: AngularFireList<any>;
-  geofences: Geofence[];
+  geofenceList: AngularFireList<any>;
+  geofence;
   lat: number;
   lng: number;
-  constructor(private geoService: GeofenceService, public database: AngularFireDatabase) {
-    this.geofenceRef = this.database.list('geofences');
+  constructor(public database: AngularFireDatabase, private alerts: AlertsService) {
+    this.geofenceList = this.database.list('geofences');
   }
-
   ngOnInit() {
     this.getUserLocation();
-    this.geoService.getFences().subscribe(geofences => {
-// console.log(geofences);
-        this.geofences = geofences;
-    });
+    this.getFences();
+//     this.geoService.getFences().subscribe(geofences => {
+// // console.log(geofences);
+//         this.geofences = geofences;
+//     });
   }
-
   getUserLocation() {
     /// Locate the user
     if (navigator.geolocation) {
@@ -46,22 +37,41 @@ export class GeofenceComponent implements OnInit {
       });
     }
   }
-  addFence(geofenceInterface: Notification) {
-    // console.log(customerInterface);
-    this.geofenceRef.push({
+  addGeofence(geofenceInterface: Geofence) {
+    this.geofenceList.push({
       geoname: this.geofenceInterface.geoname,
-      latitudes: this.geofenceInterface.latitudes,
-      longitudes: this.geofenceInterface.longitudes,
+      latitudes: this.lat,
+      longitudes: this.lng,
       radius: this.geofenceInterface.radius,
       type: this.geofenceInterface.type,
     });
+    this.alerts.setMessage('Geofence saved successfully!', 'success');
   }
-  onSubmit() {
-    if (this.geofence.geoname !== '') {
-      this.geoService.addGeofence(this.geofence);
-    }
+  getFences() {
+    this.database.list('geofences/').valueChanges().subscribe(
+      data => {
+        console.log(data);
+        this.geofence = data;
+      }
+    );
   }
-  deleteGeo(event, geofence) {
-    this.geoService.deleteGeo(geofence);
-  }
+
+  // addFence(geofenceInterface: Notification) {
+  //   // console.log(customerInterface);
+  //   this.geofenceRef.push({
+  //     geoname: this.geofenceInterface.geoname,
+  //     latitudes: this.geofenceInterface.latitudes,
+  //     longitudes: this.geofenceInterface.longitudes,
+  //     radius: this.geofenceInterface.radius,
+  //     type: this.geofenceInterface.type,
+  //   });
+  // }
+  // onSubmit() {
+  //   if (this.geofence.geoname !== '') {
+  //     this.geoService.addGeofence(this.geofence);
+  //   }
+  // }
+  // deleteGeo(event, geofence) {
+  //   this.geoService.deleteGeo(geofence);
+  // }
 }

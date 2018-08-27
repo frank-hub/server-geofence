@@ -1,8 +1,8 @@
 export interface Geofence {
   id?: string;
   geoname?: string;
-  latitudes?: string;
-  longitudes?: string;
+  latitudes?: number;
+  longitudes?: number;
   radius?: string;
   type?: string;
 }
