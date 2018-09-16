@@ -8,24 +8,14 @@
     <div class="card-body">
       <form>
 <div class="card-header">
-  <p class="h4 text-center mb-4">Sign in</p>
+  <p class="h4 text-center mb-4">Sign in With Gmail</p>
 </div>
-        <div class="md-form">
-          <i class="fa fa-envelope prefix grey-text"></i>
-          <input type="email" id="materialFormLoginEmailEx" class="form-control" required placeholder="Your email">
-          <!-- <label for="materialFormLoginEmailEx" >Your email</label> -->
-        </div>
 
-        <div class="md-form">
-          <i class="fa fa-lock prefix grey-text"></i>
-          <input mdbActive type="password" id="materialFormLoginPasswordEx" class="form-control" required placeholder="Your password">
-          <!-- <label for="materialFormLoginPasswordEx">Your password</label> -->
-        </div>
 
         <div class="text-center mt-4">
           <!-- <button class="btn btn-outline-blue lighten-1 white-text" ripple-radius (click)="serverpage()">Login</button> -->
-        <a href="/server" class="btn btn-outline-blue">Login</a>
-        <button (click)="login()">Login</button>
+        <a href="/server" class="btn btn-outline-blue" (click)="login()">Login</a>
+        <!-- <button >Login </button> -->
         </div>
       </form>
       <div *ngIf="afAuth.authState | async as authUser ; ">
